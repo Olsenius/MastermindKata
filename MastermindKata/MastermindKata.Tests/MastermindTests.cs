@@ -18,7 +18,7 @@ namespace MastermindKata.Tests
         [Test]
         public void Should_return_a_match_if_there_is_a_match_in_wrong_location()
         {
-            var mastermind = new Mastermind("r r r r");
+            var mastermind = new Mastermind("r y y y");
 
             var result = mastermind.Guess("b r b b");
 
