@@ -4,14 +4,15 @@ namespace MastermindKata
 {
     public class Mastermind
     {
+        private string _colors;
         public Mastermind(string colors)
         {
-            throw new NotImplementedException();
+            _colors = colors;
         }
 
         public string Guess(string guess)
         {
-            throw new NotImplementedException();
+            return "";
         }
     }
 }
