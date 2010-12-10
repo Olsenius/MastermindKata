@@ -24,5 +24,16 @@ namespace MastermindKata.Tests
 
             result.ShouldEqual("m");
         }
+
+        [Test]
+        public void Should_return_several_matches_if_there_are_sevral_matches_in_wrong_location()
+        {
+            var mastermind = new Mastermind("r r y y");
+
+            var result = mastermind.Guess("b b r r");
+
+            result.ShouldEqual("mm");
+        }
+
     }
 }
