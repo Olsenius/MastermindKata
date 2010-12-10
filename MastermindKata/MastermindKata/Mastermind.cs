@@ -11,24 +11,28 @@ namespace MastermindKata
             _secret = secret;
         }
 
+        private string[] Secret { get { return _secret.Split(' '); } }
+
         public string Guess(string guess)
         {
+            var matches = string.Empty;
             var guesses = guess.Split(' ');
-            var hitCount = guesses.Count(x => _secret.Contains(x));
-            if (hitCount <= 0)
-            {
-                return "";
-            }
-            else
-            {
-                var ret = string.Empty;
 
-                for (var i = 0; i < hitCount; i++)
-                {
-                    ret += 'm';
-                }
-                return ret;
+            for (int i = 0; i < Secret.Length; i++)
+            {
+                if (Secret[i] == guesses[i])
+                    matches += "p";
             }
+
+            var hitCount = guesses.Count(x => _secret.Contains(x)) - matches.Length;
+
+            for (var i = 0; i < hitCount; i++)
+            {
+                matches += 'm';
+            }
+
+            return matches;
         }
+
     }
 }
