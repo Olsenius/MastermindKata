@@ -55,7 +55,14 @@ namespace MastermindKata.Tests
             result.ShouldEqual("p");
         }
 
-        
+        [Test]
+        public void Should_return_only_p_when_guess_is_correct()
+        {
+            var mastermind = new Mastermind("r r r y");
 
+            var result = mastermind.Guess("b b y y");
+
+            result.ShouldEqual("p p p p");
+        }
     }
 }
