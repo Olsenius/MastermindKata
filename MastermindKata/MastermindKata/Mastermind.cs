@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MastermindKata
@@ -6,6 +7,8 @@ namespace MastermindKata
     public class Mastermind
     {
         private readonly string _secret;
+        private const char P = 'p';
+        private const char M = 'm';
 
         public Mastermind(string secret)
         {
@@ -21,34 +24,45 @@ namespace MastermindKata
             var mCounter = 0;
             var pCounter = 0;
 
-
             for (var i = 0; i < Secret.Length; i++)
             {
                 if (Secret[i] == guesses[i])
                 {
-                    matches += "p";
+                    matches += P;
                     pCounter++;
-                    if (mCounter > 0 && matches.Contains("m"))
+                    if (mCounter > 0 && matches.Contains(M))
                     {
-                        var firstM = matches.IndexOf('m');
-                        matches = matches.Remove(firstM, 1);
+                        matches = RemoveMatchedM(matches);
                     }
                 }
                 else
                 {
                     if (Secret.Contains(guesses[i]))
                     {
-                        matches += "m";
+                        matches += M;
                         mCounter++;
-                        if (pCounter > 0 && matches.Contains("m"))
+                        if (pCounter > 0 && matches.Contains(M))
                         {
-                            var firstP = matches.IndexOf('p');
-                            matches = matches.Remove(firstP, 1);
+                            matches = RemoveMatchedP(matches);
                         }
                             
                     }
                 }
             }
+            return matches;
+        }
+
+        private string RemoveMatchedP(string matches)
+        {
+            var firstP = matches.IndexOf(P);
+            matches = matches.Remove(firstP, 1);
+            return matches;
+        }
+
+        private string RemoveMatchedM(string matches)
+        {
+            var firstM = matches.IndexOf(M);
+            matches = matches.Remove(firstM, 1);
             return matches;
         }
     }
