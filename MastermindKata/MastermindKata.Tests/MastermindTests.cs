@@ -35,5 +35,15 @@ namespace MastermindKata.Tests
             result.ShouldEqual("mm");
         }
 
+        [Test]
+        public void Should_return_a_specific_match_if_a_match_is_in_correct_location()
+        {
+            var mastermind = new Mastermind("r r r y");
+
+            var result = mastermind.Guess("b b b y");
+
+            result.ShouldEqual("p");
+        }
+
     }
 }

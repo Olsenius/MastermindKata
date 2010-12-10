@@ -14,9 +14,21 @@ namespace MastermindKata
         public string Guess(string guess)
         {
             var guesses = guess.Split(' ');
-            if (guesses.Any(x => _secret.Contains(x)))
-                return "m";
-            return "";
+            var hitCount = guesses.Count(x => _secret.Contains(x));
+            if (hitCount <= 0)
+            {
+                return "";
+            }
+            else
+            {
+                var ret = string.Empty;
+
+                for (var i = 0; i < hitCount; i++)
+                {
+                    ret += 'm';
+                }
+                return ret;
+            }
         }
     }
 }
