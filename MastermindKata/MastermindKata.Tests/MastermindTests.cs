@@ -45,5 +45,15 @@ namespace MastermindKata.Tests
             result.ShouldEqual("p");
         }
 
+        [Test]
+        public void Should_not_include_partial_matches_if_the_color_is_already_matched_in_spesific_position()
+        {
+            var mastermind = new Mastermind("r r r y");
+
+            var result = mastermind.Guess("b b y y");
+
+            result.ShouldEqual("p");
+        }
+
     }
 }
