@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace MastermindKata
 {
@@ -17,22 +18,38 @@ namespace MastermindKata
         {
             var matches = string.Empty;
             var guesses = guess.Split(' ');
+            var mCounter = 0;
+            var pCounter = 0;
 
-            for (int i = 0; i < Secret.Length; i++)
+
+            for (var i = 0; i < Secret.Length; i++)
             {
                 if (Secret[i] == guesses[i])
+                {
                     matches += "p";
+                    pCounter++;
+                    if (mCounter > 0 && matches.Contains("m"))
+                    {
+                        var firstM = matches.IndexOf('m');
+                        matches = matches.Remove(firstM, 1);
+                    }
+                }
+                else
+                {
+                    if (Secret.Contains(guesses[i]))
+                    {
+                        matches += "m";
+                        mCounter++;
+                        if (pCounter > 0 && matches.Contains("m"))
+                        {
+                            var firstP = matches.IndexOf('p');
+                            matches = matches.Remove(firstP, 1);
+                        }
+                            
+                    }
+                }
             }
-
-            var hitCount = guesses.Count(x => _secret.Contains(x)) - matches.Length;
-
-            for (var i = 0; i < hitCount; i++)
-            {
-                matches += 'm';
-            }
-
             return matches;
         }
-
     }
 }

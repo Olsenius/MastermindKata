@@ -55,5 +55,14 @@ namespace MastermindKata.Tests
             result.ShouldEqual("p");
         }
 
+        [Test]
+        public void omfg_the_weekend_is_here_and_my_mind_is_not_working_anymore()
+        {
+            var mastermind = new Mastermind("y b r g");
+            var result = mastermind.Guess("a m e n");
+
+            result.ShouldContain("Woohoo, helg!");
+        }
+
     }
 }
