@@ -64,5 +64,15 @@ namespace MastermindKata.Tests
 
             result.ShouldEqual("pppp");
         }
+
+        [Test]
+        public void Should_not_match_pegs_more_than_once()
+        {
+            var mastermind = new Mastermind("r y y y");
+
+            var result = mastermind.Guess("g r r r");
+
+            result.ShouldEqual("m");
+        }
     }
 }
