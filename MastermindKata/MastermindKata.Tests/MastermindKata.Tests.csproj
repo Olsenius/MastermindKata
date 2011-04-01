@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="CoreTDD.NUnit.cs" />
     <Compile Include="MastermindTests.cs" />
-    <Compile Include="NUnitSampleTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

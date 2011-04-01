@@ -52,14 +52,14 @@ namespace MastermindKata
             return matches;
         }
 
-        private string RemoveMatchedP(string matches)
+        private static string RemoveMatchedP(string matches)
         {
             var firstP = matches.IndexOf(P);
             matches = matches.Remove(firstP, 1);
             return matches;
         }
 
-        private string RemoveMatchedM(string matches)
+        private static string RemoveMatchedM(string matches)
         {
             var firstM = matches.IndexOf(M);
             matches = matches.Remove(firstM, 1);

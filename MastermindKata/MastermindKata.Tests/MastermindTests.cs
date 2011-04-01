@@ -3,7 +3,7 @@ using NUnit.Framework;
 namespace MastermindKata.Tests
 {
     [TestFixture]
-    public class MastermindTests
+    public class LMastermindTests
     {
         [Test]
         public void Should_not_return_any_matches_when_there_is_no_matches()
@@ -60,9 +60,9 @@ namespace MastermindKata.Tests
         {
             var mastermind = new Mastermind("r r r y");
 
-            var result = mastermind.Guess("b b y y");
+            var result = mastermind.Guess("r r r y");
 
-            result.ShouldEqual("p p p p");
+            result.ShouldEqual("pppp");
         }
     }
 }
